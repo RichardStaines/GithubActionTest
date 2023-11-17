@@ -26,7 +26,7 @@ jobs:
       - name: Python version
         run: |
             ls -al
-            python -version
+            python --version
         
       - name: runIt
         run: python pySample.pySample
