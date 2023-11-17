@@ -10,8 +10,15 @@ env:
     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-
+  test:
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Python version
+        run: python pySample.py        
+        
   build:
+    needs: [test]
     runs-on: ubuntu-latest
 
     steps:
@@ -35,7 +42,5 @@ jobs:
             ls -al
             python --version
         
-      - name: Python version
-        run: python pySample.py        
         
         
