@@ -3,8 +3,11 @@
 name: python app
 
 # Controls when the workflow will run
-on: push
+on: [push]
 
+env:
+    ARTIFACT_NAME: myArtifact
+    
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -15,7 +18,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+            name: ${{ env.ARTIFACT_NAME }}
+            path: .
 
       - name: Python Syntax Checker
         uses: cclauss/Find-Python-syntax-errors-action@v0.2.0
