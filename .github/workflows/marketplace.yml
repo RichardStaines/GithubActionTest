@@ -13,8 +13,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: runIt
+      - name: checkout
         uses: actions/checkout@v3
+      - name: runIt
         run: python pySample.py
         
   # This workflow contains a single job called "build"
