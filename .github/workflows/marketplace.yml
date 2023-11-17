@@ -20,3 +20,16 @@ jobs:
       - name: Python Syntax Checker
         uses: cclauss/Find-Python-syntax-errors-action@v0.2.0
           
+      - name: Python install
+        uses: "docker://python:3.9"
+        
+      - name: Python version
+        run: |
+            ls -al
+            python -version
+        
+      - name: runIt
+        run: python pySample.pySample
+        
+        
+        
